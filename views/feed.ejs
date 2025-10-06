@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Home · SocialApp</title>
+  <link rel="stylesheet" href="/public/styles.css"/>
+</head>
+<body>
+<header>
+  <h1>SocialApp</h1>
+  <div class="nav">
+    <% if (user) { %>
+      <a href="/compose">Compose</a>
+      <a href="/u/<%= user.username %>">@<%= user.username %></a>
+      <form method="POST" action="/logout" style="display:inline"><button class="secondary" type="submit">Logout</button></form>
+    <% } else { %>
+      <a href="/login">Login</a>
+      <a href="/signup">Sign up</a>
+    <% } %>
+  </div>
+</header>
+<main>
+  <section class="card">
+    <h2>Recent posts</h2>
+    <% posts.forEach(p => { %>
+      <div class="post">
+        <div><strong><a href="/u/<%= p.author %>">@<%= p.author %></a></strong></div>
+        <div><%= p.content %></div>
+        <div class="meta">
+          <span><%= new Date(p.createdAt).toLocaleString() %></span> ·
+          <span>❤ <%= p.likes || 0 %></span> ·
+          <form method="POST" action="/posts/<%= p.post_id %>/like" style="display:inline">
+            <button class="secondary" type="submit">Like/Unlike</button>
+          </form> ·
+          <a href="/p/<%= p.post_id %>">Permalink</a>
+        </div>
+      </div>
+    <% }) %>
+  </section>
+</main>
+<footer>
+  <p><a href="/healthz">Health</a></p>
+</footer>
+</body>
+</html>

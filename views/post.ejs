@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Post</title><link rel="stylesheet" href="/public/styles.css"/></head>
+<body>
+<header><h1>Post</h1><div class="nav"><a href="/">Home</a></div></header>
+<main>
+  <section class="card">
+    <div class="post">
+      <div><strong><a href="/u/<%= post.author %>">@<%= post.author %></a></strong></div>
+      <div><%= post.content %></div>
+      <div class="meta">
+        <span><%= new Date(post.createdAt).toLocaleString() %></span> ·
+        <span>❤ <%= post.likes || 0 %></span>
+        <% if (viewer) { %>
+          <form method="POST" action="/posts/<%= post.post_id %>/like" style="display:inline">
+            <button class="secondary" type="submit"><%= liked ? 'Unlike' : 'Like' %></button>
+          </form>
+        <% } %>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

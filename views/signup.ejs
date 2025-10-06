@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Sign up</title><link rel="stylesheet" href="/public/styles.css"/></head>
+<body>
+<header><h1>Sign up</h1><div class="nav"><a href="/login">Login</a></div></header>
+<main>
+  <section class="card">
+    <% if (error) { %><div class="alert"><%= error %></div><% } %>
+    <form method="POST" action="/signup">
+      <label>Username <input name="username" required /></label>
+      <label>Display name <input name="displayName" required /></label>
+      <label>Password <input name="password" type="password" required /></label>
+      <button type="submit">Create account</button>
+    </form>
+  </section>
+</main>
+</body>
+</html>

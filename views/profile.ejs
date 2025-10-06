@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>@<%= profile.username %></title><link rel="stylesheet" href="/public/styles.css"/></head>
+<body>
+<header><h1>@<%= profile.username %></h1><div class="nav"><a href="/">Home</a></div></header>
+<main>
+  <section class="card">
+    <h2>Posts</h2>
+    <% posts.forEach(p => { %>
+      <div class="post">
+        <div><%= p.content %></div>
+        <div class="meta">
+          <span><%= new Date(p.createdAt).toLocaleString() %></span> ·
+          <span>❤ <%= p.likes || 0 %></span>
+        </div>
+      </div>
+    <% }) %>
+  </section>
+</main>
+</body>
+</html>

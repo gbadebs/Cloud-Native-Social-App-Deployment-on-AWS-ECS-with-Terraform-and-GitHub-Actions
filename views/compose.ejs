@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Compose</title><link rel="stylesheet" href="/public/styles.css"/></head>
+<body>
+<header><h1>Compose</h1><div class="nav"><a href="/">Home</a></div></header>
+<main>
+  <section class="card">
+    <% if (error) { %><div class="alert"><%= error %></div><% } %>
+    <form method="POST" action="/posts">
+      <label>What's happening?
+        <textarea name="content" rows="4" maxlength="280" required></textarea>
+      </label>
+      <button type="submit">Post</button>
+    </form>
+  </section>
+</main>
+</body>
+</html>
